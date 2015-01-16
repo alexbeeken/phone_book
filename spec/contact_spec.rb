@@ -22,7 +22,8 @@ describe("Contact") do
   describe("#phone") do
     it('displays the current contacts phone number') do
       test_phone = Phone.new({:number => "555-555-5555", :type => "work", :carrier => "Verizon"})
-      test_contact = Contact.new({:name => "Foo Bar", :phone => test_phone})
+      test_contact = Contact.new({:name => "Foo Bar"})
+      test_contact.add_phone(test_phone)
       test_contact.save()
       expect(test_contact.phone()).to(eq([test_phone]))
     end
@@ -31,6 +32,7 @@ describe("Contact") do
       test_phone = Phone.new({:number => "555-555-5555", :type => "work", :carrier => "Verizon"})
       test_phone2 = Phone.new({:number => "555-555-5556", :type => "home", :carrier => "ATT"})
       test_contact = Contact.new({:name => "Foo Bar", :phone => test_phone})
+      test_contact.add_phone(test_phone)
       test_contact.add_phone(test_phone2)
       test_contact.save()
       expect(test_contact.phone()).to(eq([test_phone, test_phone2]))
