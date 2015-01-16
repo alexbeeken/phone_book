@@ -49,6 +49,6 @@ end
 
 post('/search') do
   @findme = params.fetch('findme')
-  @results = Contact.find_contact_by_name(@results)
+  @results = Contact.find_contact_by_name(@findme)
   erb(:search_results)
 end
