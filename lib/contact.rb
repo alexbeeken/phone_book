@@ -1,5 +1,5 @@
 class Contact
-  attr_reader(:name, :phone)
+  attr_reader(:name, :phone, :id)
 
 
   @@phone_book = []
@@ -8,6 +8,7 @@ class Contact
     @name = attributes.fetch(:name)
     @phone = []
     @phone.push(attributes[:phone])
+    @id = @@phone_book.length+1
   end
 
   # INSTANCE METHODS
@@ -35,11 +36,10 @@ class Contact
     else
       @@phone_book.push(self)
     end
-
   end
 
-  define_method(:delete_contact) do
-    #TODO
+  define_method(:set_id) do |id|
+    @id = id
   end
 
 
@@ -65,5 +65,16 @@ class Contact
       end
     end
   end
+
+  define_singleton_method(:find_contact_by_id) do |id|
+    @@phone_book[id-1]
+  end
+
+  define_singleton_method(:reassign_ids) do
+    counter = 1
+    @@phone_book.each() do |contact|
+      contact.set_id(counter)
+    end
+end
 
 end
