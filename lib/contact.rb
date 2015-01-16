@@ -7,7 +7,7 @@ class Contact
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
     @phone = []
-    @phone.push(attributes.fetch(:phone))
+    @phone.push(attributes[:phone])
   end
 
   # INSTANCE METHODS

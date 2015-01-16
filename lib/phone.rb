@@ -2,8 +2,8 @@ class Phone
   attr_reader(:number, :type, :carrier)
 
   define_method(:initialize) do |attributes|
-    @number = attributes.fetch(:number)
-    @type = attributes.fetch(:type)
-    @carrier = attributes.fetch(:carrier)
+    @number = attributes[:number]
+    @type = attributes[:type]
+    @carrier = attributes[:carrier]
   end
 end
