@@ -1,7 +1,6 @@
 class Contact
   attr_reader(:name, :phone, :id)
 
-
   @@phone_book = []
 
   define_method(:initialize) do |attributes|
@@ -76,6 +75,46 @@ class Contact
     @@phone_book.each() do |contact|
       contact.set_id(counter)
     end
-end
+  end
+
+  define_singleton_method(:alphabetize) do
+    placeholder = 0
+    sorted = false
+    length_of_phone_book = @@phone_book.length()
+    until sorted == true
+      sorted = true
+      contact_counter = 1
+    @@phone_book.each() do |contact|
+      compare_counter = 0
+      loop_times = length_of_phone_book - contact_counter
+      loop_times.times() do
+      puts("statement block: #{@@phone_book[contact_counter].name()[0]} out of order with #{contact.name()[0]}? #{(@@phone_book[contact_counter].name()[0]) > (contact.name()[0])}")
+        if @@phone_book[contact_counter].name()[0] > contact.name()[0]
+           #binding.pry
+           compare = @@phone_book[compare_counter]
+           index_of_contact = @@phone_book.index(contact)
+           index_of_compare = @@phone_book.index(compare)
+           puts("before contact index #{@@phone_book.index(contact)}")
+           puts("before compare index #{@@phone_book.index(compare)}")
+           @@phone_book.delete(contact)
+           @@phone_book.insert(index_of_compare, contact)
+           @@phone_book.delete(compare)
+           @@phone_book.insert(index_of_contact, compare)
+           puts("after contact index #{@@phone_book.index(contact)}")
+           puts("after compare index #{@@phone_book.index(compare)}")
+           puts("other info loop_times: #{loop_times}")
+           puts("compare_counter: #{compare_counter}")
+           compare_counter = compare_counter + 1
+           sorted = false
+         end
+       end
+       contact_counter = contact_counter + 1
+     end
+   end
+ end
+
+
+
+
 
 end

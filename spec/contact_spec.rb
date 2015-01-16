@@ -114,5 +114,19 @@ describe("Contact") do
     end
   end
 
+  describe(".alphabetize") do
+    it("alphabetizes the phone book by name") do
+      test_phone = Phone.new({:number => "555-555-5555", :type => "work", :carrier => "Verizon"})
+      test_contact = Contact.new({:name => "z", :phone => test_phone})
+      test_contact.save()
+      test_phone2 = Phone.new({:number => "555-555-5557", :type => "work", :carrier => "T-Mobile"})
+      test_contact2 = Contact.new({:name => "a", :phone => test_phone2})
+      test_contact2.save()
+      Contact.alphabetize()
+      expect(Contact.all()).to(eq([test_contact2, test_contact]))
+    end
+  end
+
+
 
 end
