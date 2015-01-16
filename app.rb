@@ -46,3 +46,9 @@ post('/add_phone') do
   @contact.add_phone(@phone)
   redirect "/contacts/#{@id}"
 end
+
+post('/search') do
+  @findme = params.fetch('findme')
+  @results = Contact.find_contact_by_name(@results)
+  erb(:search_results)
+end

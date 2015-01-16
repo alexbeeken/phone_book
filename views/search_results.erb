@@ -1,0 +1,13 @@
+<%= "<h2>You searched for #{@findme}" %>
+
+<br>
+
+<% if @results != false %>
+
+<%= "We found this person in the phone book!" %>
+
+<%= "<a href='/contacts/#{contact.id()}'>#{contact.name()}<a>" %>
+
+<% else %>
+
+<%= "Sorry, #{findme} does not seem to be in this phonebook. You might try <a href='www.yellowpages.com'>Yellowpages<a>'" %>
