@@ -17,7 +17,25 @@ class Contact
   end
 
   define_method(:save) do
-    @@phone_book.push(self)
+
+    insert_index = nil
+    deleteme = nil
+
+    @@phone_book.each() do |contact|
+      if contact.name() == self.name()
+        already_in = true
+        insert_index = @@phone_book.index(contact)
+        deleteme = contact
+      end
+    end
+
+    if insert_index != nil
+      @@phone_book.delete(deleteme)
+      @@phone_book.insert(insert_index, self)
+    else
+      @@phone_book.push(self)
+    end
+
   end
 
   define_method(:delete_contact) do

@@ -57,4 +57,25 @@ describe("Contact") do
       expect(Contact.all()).to(eq([test_contact]))
     end
   end
+
+  describe(".save") do
+    
+    it('saves contacts into the phone book') do
+      test_phone = Phone.new({:number => "555-555-5555", :type => "work", :carrier => "Verizon"})
+      test_contact = Contact.new({:name => "Foo Bar", :phone => test_phone})
+      test_contact.save()
+      expect(Contact.all()).to(eq([test_contact]))
+    end
+
+    it('updates contacts in the phone book if name already exists') do
+      test_phone = Phone.new({:number => "555-555-5555", :type => "work", :carrier => "Verizon"})
+      test_contact = Contact.new({:name => "Foo Bar", :phone => test_phone})
+      test_contact.save()
+      test_phone = Phone.new({:number => "555-555-5557", :type => "work", :carrier => "T-Mobile"})
+      test_contact = Contact.new({:name => "Foo Bar", :phone => test_phone})
+      test_contact.save()
+      expect(Contact.all()).to(eq([test_contact]))
+    end
+  end
+
 end
