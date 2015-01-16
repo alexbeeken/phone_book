@@ -1,5 +1,5 @@
 class Contact
-  attr_reader(:contact)
+  attr_reader(:contact, :phone)
 
 
   @@phone_book = []
@@ -13,7 +13,7 @@ class Contact
   # INSTANCE METHODS
 
   define_method(:add_phone) do |new_number|
-    #TODO
+    @phone.push(new_number)
   end
 
   define_method(:save) do
@@ -23,8 +23,6 @@ class Contact
   define_method(:delete_contact) do
     #TODO
   end
-
-
 
 
 
