@@ -1,0 +1,46 @@
+<div id="current_contacts_table">
+  <table>
+    <tr>
+      <td>
+        <strong><%= @contact.name() %>
+        </td>
+      </tr>
+      <% if @contact.phone() != [] %>
+        <% index_counter = 0 %>
+          <% @contact.phone().each() do |phone| %>
+            <tr>
+              <td>
+                <%= phone.number() %>
+              </td>
+              <td>
+                <%= phone.type() %>
+              </td>
+              <td>
+                <%= phone.carrier() %>
+              </td>
+              <td>
+                <%= "<form action='/delete_phone' method='post'>
+                     <input type='hidden' name='id' value='#{@contact.id()}'>
+                     <input type='hidden' name='index_counter' value='#{index_counter}'>
+                     <input type='submit' value='delete'> </form>" %>
+              </td>
+            </tr>
+          <% index_counter = index_counter + 1 %>
+        <% end %>
+      <% end %>
+    </table>
+  </div>
+
+  <div id="add_phone_form">
+    <form action='/add_phone' method='post'>
+      <div class="form-group">
+        <label>Add a phone number:
+          <input name="number" type="text" placeholder="Number">
+          <input name="type" type="text" placeholder="Home/Work/Office">
+          <input name="carrier" type="text" placeholder="Cell Service Provider">
+          <input name="id" type="hidden" value="<%= @contact.id %>">
+        </label>
+        <input name="submit" type="submit"  value="Add">
+      </div>
+    </form>
+  </div>

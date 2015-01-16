@@ -2,13 +2,16 @@
   <table>
     <tr>
       <td>
-        <strong>Name:
+        <strong>Name:</strong>
       </td>
     </tr>
     <% @phone_book.each() do |contact| %>
     <tr>
       <td>
-        <%= contact.name() %>
+        <%= "<a href='/contacts/#{contact.id()}'>#{contact.name()}<a>" %>
+      </td>
+      <td>
+        <%= "<form action='/delete_contact' method='post'> <input type='hidden' name='id' value='#{contact.id()}'> <input type='submit' value='delete'> </form>" %>
       </td>
     </tr>
     <% end %>
@@ -16,7 +19,7 @@
 </div>
 
 <div id="add_contact_form">
-  <form action='/add_contact' >
+  <form action='/add_contact' method='post'>
     <div class="form-group">
       <label>Add a New Contact:
         <input id="input_string" name="name" class="form-control" type="text" size="30" placeholder="enter name">

@@ -46,6 +46,15 @@ describe("Contact") do
     end
   end
 
+  describe("#delete_phone_at_index") do
+    it('deletes the phone at that index in a contact') do
+      test_phone = Phone.new({:number => "555-555-5555", :type => "work", :carrier => "Verizon"})
+      test_contact = Contact.new({:name => "Foo Bar", :phone => test_phone})
+      test_contact.delete_phone_at_index(0)
+      expect(test_contact.phone()).to(eq([]))
+    end
+  end
+
 
 # CLASS METHODS
 

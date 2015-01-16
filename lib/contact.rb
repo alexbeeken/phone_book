@@ -7,7 +7,6 @@ class Contact
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
     @phone = []
-    @phone.push(attributes[:phone])
     @id = @@phone_book.length+1
   end
 
@@ -42,7 +41,9 @@ class Contact
     @id = id
   end
 
-
+  define_method(:delete_phone_at_index) do |index|
+    @phone.delete_at(index)
+  end
 
   # CLASS METHODS
 
@@ -67,7 +68,7 @@ class Contact
   end
 
   define_singleton_method(:find_contact_by_id) do |id|
-    @@phone_book[id-1]
+    @@phone_book[(id - 1)]
   end
 
   define_singleton_method(:reassign_ids) do
