@@ -1,11 +1,11 @@
 class Contact
-  attr_reader(:contact, :phone)
+  attr_reader(:name, :phone)
 
 
   @@phone_book = []
 
   define_method(:initialize) do |attributes|
-    @contact = attributes.fetch(:contact)
+    @name = attributes.fetch(:name)
     @phone = []
     @phone.push(attributes.fetch(:phone))
   end
