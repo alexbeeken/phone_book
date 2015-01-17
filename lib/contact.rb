@@ -6,7 +6,7 @@ class Contact
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
     @phone = []
-    @id = @@phone_book.length+1
+    @id = @@phone_book.length()+1
   end
 
   # INSTANCE METHODS
@@ -67,14 +67,15 @@ class Contact
     return false
   end
 
-  define_singleton_method(:find_contact_by_id) do |id|
-    @@phone_book[(id - 1)]
+  define_singleton_method(:find_contact_by_id) do |id_in|
+    @@phone_book[(id_in - 1)]
   end
 
   define_singleton_method(:reassign_ids) do
     counter = 1
     @@phone_book.each() do |contact|
       contact.set_id(counter)
+      counter = counter + 1
     end
   end
 end

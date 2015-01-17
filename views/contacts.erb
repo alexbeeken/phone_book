@@ -1,14 +1,27 @@
+<h1><%= @contact.name() %></h1>
+
 <div id="current_phones_table">
-  <table>
-    <tr>
+  <table class="table">
+    <th>
+
       <td>
-        <strong><%= @contact.name() %>
-        </td>
-      </tr>
+        <strong>Number</strong>
+      </td>
+      <td>
+        <strong>Place</strong>
+      </td>
+      <td>
+        <strong>Service Provider</strong>
+      </td>
+
+    </th>
+
       <% if @contact.phone() != [] %>
         <% index_counter = 0 %>
           <% @contact.phone().each() do |phone| %>
             <tr>
+              <td>
+              </td>
               <td>
                 <%= phone.number() %>
               </td>

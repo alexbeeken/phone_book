@@ -2,8 +2,10 @@ require('sinatra')
 require('sinatra/reloader')
 require('./lib/contact')
 require('./lib/phone')
+require('pry')
 
 get('/') do
+  Contact.reassign_ids()
   @phone_book = Contact.all()
   erb(:form)
 end
@@ -25,6 +27,7 @@ post('/delete_contact') do
   @id = params.fetch('id').to_i
   @contact = Contact.find_contact_by_id(@id)
   Contact.delete_contact(@contact)
+  Contact.reassign_ids()
   redirect '/'
 end
 
