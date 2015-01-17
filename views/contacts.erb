@@ -1,9 +1,8 @@
-<h1><%= @contact.name() %></h1>
+<h1 align="center"><%= @contact.name() %></h1>
 
 <div id="current_phones_table">
   <table class="table">
     <th>
-
       <td>
         <strong>Number</strong>
       </td>
@@ -13,9 +12,7 @@
       <td>
         <strong>Service Provider</strong>
       </td>
-
     </th>
-
       <% if @contact.phone() != [] %>
         <% index_counter = 0 %>
           <% @contact.phone().each() do |phone| %>
@@ -38,24 +35,24 @@
                      <input type='submit' value='delete' class='btn btn-default'> </form>" %>
               </td>
             </tr>
-          <% index_counter = index_counter + 1 %>
-        <% end %>
+        <% index_counter = index_counter + 1 %>
       <% end %>
-    </table>
-  </div>
+    <% end %>
+  </table>
+</div>
 
   <div id="add_phone_form">
     <form action='/add_phone' method='post'>
       <div class="form-group">
         <label>Add a phone number:
           <br>
-          <input name="number" type="text" placeholder="Number">
+            <input name="number" type="text" placeholder="Number">
           <br>
-          <input name="type" type="text" placeholder="Home/Work/Office">
+            <input name="type" type="text" placeholder="Home/Work/Office">
           <br>
-          <input name="carrier" type="text" placeholder="Cell Service Provider">
+            <input name="carrier" type="text" placeholder="Cell Service Provider">
           <br>
-          <input name="id" type="hidden" value="<%= @contact.id %>">
+            <input name="id" type="hidden" value="<%= @contact.id %>">
         </label>
         <input name="submit" type="submit"  value="Add" class="btn btn-default">
       </div>

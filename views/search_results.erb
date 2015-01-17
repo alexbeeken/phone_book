@@ -1,22 +1,11 @@
-
-<%= "<h2>You searched for #{@findme}" %>
-
-<br>
-
+<%= "<h2>You searched for #{@findme}</h2>" %>
+  <br>
 <% if @results != false %>
-
-<%= "We found this person in the phone book:" %>
-
-<br>
-
-<%= "<a href='/contacts/#{@results.id()}'>#{@results.name()}<a>" %>
-
+  <%= "We found this person in the phone book:" %>
+  <br>
+  <%= "<a href='/contacts/#{@results.id()}'>#{@results.name()}<a>" %>
 <% else %>
-
-<%= "Sorry, #{@findme} does not seem to be in this phonebook." %>
-
-<br>
-
-<%= "You might try <a href='www.yellowpages.com'>Yellowpages<a>'" %>
-
+  <%= "Sorry, #{@findme} does not seem to be in this phonebook." %>
+  <br>
+  <%= "You might try <a href='http://www.yellowpages.com'>Yellowpages<a>'" %>
 <% end %>

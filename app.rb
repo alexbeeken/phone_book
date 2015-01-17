@@ -2,7 +2,6 @@ require('sinatra')
 require('sinatra/reloader')
 require('./lib/contact')
 require('./lib/phone')
-require('pry')
 
 get('/') do
   Contact.reassign_ids()

@@ -1,7 +1,10 @@
 class Contact
   attr_reader(:name, :phone, :id)
-
   @@phone_book = []
+
+
+  ####### INSTANCE METHODS
+
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
@@ -9,17 +12,13 @@ class Contact
     @id = @@phone_book.length()+1
   end
 
-  # INSTANCE METHODS
-
   define_method(:add_phone) do |new_number|
     @phone.push(new_number)
   end
 
   define_method(:save) do
-
     insert_index = nil
     deleteme = nil
-
     @@phone_book.each() do |contact|
       if contact.name() == self.name()
         already_in = true
@@ -27,7 +26,6 @@ class Contact
         deleteme = contact
       end
     end
-
     if insert_index != nil
       @@phone_book.delete(deleteme)
       @@phone_book.insert(insert_index, self)
@@ -44,7 +42,9 @@ class Contact
     @phone.delete_at(index)
   end
 
-  # CLASS METHODS
+
+  ####### CLASS METHODS
+
 
   define_singleton_method(:clear) do
     @@phone_book = []
